@@ -1,0 +1,18 @@
+p {
+    width: 50%;
+    border-color: red;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 5px;
+    margin: 20px;
+    padding: 5px;
+}
+
+.person {
+    width: 50%;
+    border-color: blue;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 5px;
+    margin: 20px;
+}
