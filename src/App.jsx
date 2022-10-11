@@ -1,8 +1,11 @@
 import "./App.css";
+import PostFeed from "./PostFeed";
 
 function App() {
   return (
-    null
+    <>
+    <PostFeed />
+    </>
   )
 }
 
