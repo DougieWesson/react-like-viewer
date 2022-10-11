@@ -1,15 +1,19 @@
 import "./Post.css";
 import LikeCounter from "./LikeCounter";
 
-function Post({ content, likes }) {
-    return (
-        <>
-        <div className="post">
-            <p>{content}</p>
-            <LikeCounter likes={likes} />
-        </div>
-        </>
-    )
+function Post({ content, id, likes, increaseLikes }) {
+  return (
+    <>
+      <div className="post">
+        <p>{content}</p>
+        <LikeCounter
+          id={"like counter" + id}
+          likes={likes}
+          increaseLikes={() => increaseLikes()}
+        />
+      </div>
+    </>
+  );
 }
 
 export default Post;
