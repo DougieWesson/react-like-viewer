@@ -1,10 +1,10 @@
 import "./LikeCounter.css";
 
-function LikeCounter({likes}) {
+function LikeCounter({ likes, increaseLikes }) {
     return (
         <>
         <div>
-            <p>{likes}<button>Like</button></p>
+            <p>{likes}<button onClick={() => increaseLikes()}>Like</button></p>
         </div>
         </>
     )
