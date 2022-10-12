@@ -1,28 +1,7 @@
 import "./PostFeed.scss";
 import Post from "./Post";
-import { useState } from "react";
 
-function PostFeed() {
-  const fakePosts = [
-    {
-      content: "I like dogs!",
-      id: 0,
-      likes: 0,
-    },
-    {
-      content: "I like cats!",
-      id: 1,
-      likes: 0,
-    },
-    {
-      content: "I like BOTH!",
-      id: 2,
-      likes: 0,
-    },
-  ];
-
-  const [posts, addLikes] = useState([...fakePosts])
-
+function PostFeed({ posts, changePosts }) {
   const showPosts = () => {
     return posts.map((post) => {
       return (
@@ -38,21 +17,16 @@ function PostFeed() {
   };
 
   const increaseLikes = (id) => {
-    console.log("I was clicked");
     const updated = posts.map((post) => {
-        if(post.id === id) {
-            return {id, content: post.content, likes: post.likes + 1};
-        }
-        return post;
-    })
-    addLikes(updated);
+      if (post.id === id) {
+        return { id, content: post.content, likes: post.likes + 1 };
+      }
+      return post;
+    });
+    changePosts(updated);
   };
 
-  return (
-    <>
-      <div>{showPosts()}</div>
-    </>
-  );
+  return <div>{showPosts()}</div>;
 }
 
 export default PostFeed;
