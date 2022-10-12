@@ -1,4 +1,4 @@
-import "./PostFeed.css";
+import "./PostFeed.scss";
 import Post from "./Post";
 import { useState } from "react";
 
