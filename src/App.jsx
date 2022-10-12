@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 import PostFeed from "./PostFeed";
 
 function App() {

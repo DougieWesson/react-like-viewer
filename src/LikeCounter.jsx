@@ -1,4 +1,4 @@
-import "./LikeCounter.css";
+import "./LikeCounter.scss";
 
 function LikeCounter({ likes, increaseLikes }) {
     return (

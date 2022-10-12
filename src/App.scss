@@ -1,0 +1,11 @@
+@import 'variables';
+@import 'mixins';
+@import 'textStyles';
+
+@import 'PostFeed';
+@import 'Post';
+@import 'LikeCounter';
+
+body {
+    padding: 20px;
+}
