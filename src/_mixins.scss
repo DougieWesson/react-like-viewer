@@ -1,0 +1,7 @@
+@mixin baseBorder() {
+    border-style: solid;
+    border-color: blue;
+    border-width: 1px;
+    border-radius: 10px;
+    margin: 5px;
+}

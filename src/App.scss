@@ -10,3 +10,15 @@ body {
     padding: 20px;
     background-color: $background;
 }
+
+#postContent {
+    @include baseBorder();
+}
+
+Button {
+    @include baseBorder();
+}
+
+.formLabel {
+    @include baseBorder();
+}
