@@ -22,3 +22,11 @@ Button {
 .formLabel {
     @include baseBorder();
 }
+
+.mr-auto {
+    @include baseBorder();
+}
+
+.navBrand {
+    @include baseBorder();
+}

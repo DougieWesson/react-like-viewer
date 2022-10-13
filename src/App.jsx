@@ -4,6 +4,8 @@ import Container from "react-bootstrap/Container";
 import PostAddForm from "./PostAddForm";
 import PostFeed from "./PostFeed";
 import { useState } from "react";
+import { Link, Route, Routes } from "react-router-dom";
+import { Nav, Navbar } from "react-bootstrap";
 
 function App() {
   const [posts, changePosts] = useState([]);
@@ -11,15 +13,45 @@ function App() {
   const addPost = (content) => {
     const updated = [
       ...posts,
-      { id: posts.length, content: content.content, likes: 0 },
+      { id: ((posts.length>0) ? (posts[posts.length-1].id)+1 : 0), content: content.content, likes: 0 },
     ];
     changePosts(updated);
   };
 
+  
+
   return (
     <Container>
-      <PostAddForm addPost={addPost} />
-      <PostFeed posts={posts} changePosts={changePosts} />
+      <Navbar>
+        <Navbar.Brand className="navBrand">Fak-E-Book</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mr-auto">
+            <Link className="nav-link" to="/">
+              Home
+            </Link>
+            <Link className="nav-link" to="/feed">
+              Feed
+            </Link>
+            <Link className="nav-link" to="/add">
+              Add Post
+            </Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+      <Routes>
+        <Route
+        exact
+          path="/"
+          element={<PostFeed posts={posts} changePosts={changePosts} />}
+        />
+        <Route
+        exact 
+          path="/feed"
+          element={<PostFeed className="postFeed" posts={posts} changePosts={changePosts} />}
+        />
+        <Route exact path="/add" element={<PostAddForm addPost={addPost} />} />
+      </Routes>
     </Container>
   );
 }

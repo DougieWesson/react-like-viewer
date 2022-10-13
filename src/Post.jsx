@@ -1,6 +1,7 @@
+import { Button } from "react-bootstrap";
 import LikeCounter from "./LikeCounter";
 
-function Post({ content, id, likes, increaseLikes }) {
+function Post({ content, id, likes, increaseLikes, removePost }) {
   return (
     <>
       <div className="post">
@@ -10,6 +11,7 @@ function Post({ content, id, likes, increaseLikes }) {
           likes={likes}
           increaseLikes={() => increaseLikes()}
         />
+        <Button onClick={() => removePost()}>Remove Post</Button>
       </div>
     </>
   );

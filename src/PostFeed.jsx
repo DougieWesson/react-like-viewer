@@ -10,9 +10,15 @@ function PostFeed({ posts, changePosts }) {
           id={post.id}
           likes={post.likes}
           increaseLikes={() => increaseLikes(post.id)}
+          removePost={() => removePost(post.id)}
         />
       );
     });
+  };
+
+  const removePost = (badPostID) => {
+    const updated = posts.filter((post) => post.id !== badPostID);
+    changePosts(updated);
   };
 
   const increaseLikes = (id) => {
