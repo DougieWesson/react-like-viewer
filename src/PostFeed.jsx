@@ -1,4 +1,3 @@
-import "./PostFeed.scss";
 import Post from "./Post";
 
 function PostFeed({ posts, changePosts }) {

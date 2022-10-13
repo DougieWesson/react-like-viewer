@@ -9,7 +9,10 @@ function App() {
   const [posts, changePosts] = useState([]);
 
   const addPost = (content) => {
-    const updated = [...posts, { id: posts.length, content, likes: 0 }];
+    const updated = [
+      ...posts,
+      { id: posts.length, content: content.content, likes: 0 },
+    ];
     changePosts(updated);
   };
 

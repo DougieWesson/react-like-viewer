@@ -3,17 +3,21 @@ import { Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 
 function PostAddForm({ addPost }) {
-  const [contentValue, changeContentValue] = useState("");
+  const initialPostState = { content: "", tags: "" };
+
+  const [formValues, changeFormValues] = useState(initialPostState);
 
   const handleChange = (event) => {
     event.preventDefault();
-    changeContentValue(event.target.value);
+    const newState = { ...formValues };
+    newState[event.target.name] = event.target.value;
+    changeFormValues(newState);
   };
 
   const addPostHandler = (event) => {
     event.preventDefault();
-    addPost(contentValue);
-    changeContentValue("");
+    addPost(formValues);
+    changeFormValues(initialPostState);
   };
 
   return (
@@ -24,10 +28,19 @@ function PostAddForm({ addPost }) {
           <Form.Control
             name="content"
             type="text"
-            value={contentValue}
+            value={formValues.content}
             onChange={(event) => handleChange(event)}
           />
         </Form.Group>
+        {/* <Form.Group controlId="postTags">
+          <Form.Label> Post Tags </Form.Label>
+          <Form.Control
+            name="tags"
+            type="text"
+            value={formValues.tags}
+            onChange={(event) => handleChange(event)}
+          />
+        </Form.Group> */}
         <Button
           variant="primary"
           type="submit"

@@ -1,13 +1,14 @@
-import "./LikeCounter.scss";
-
 function LikeCounter({ likes, increaseLikes }) {
-    return (
-        <>
-        <div>
-            <p>{likes}<button onClick={() => increaseLikes()}>Like</button></p>
-        </div>
-        </>
-    )
+  return (
+    <>
+      <div>
+        <p>
+          {likes}
+          <button onClick={() => increaseLikes()}>Like</button>
+        </p>
+      </div>
+    </>
+  );
 }
 
 export default LikeCounter;

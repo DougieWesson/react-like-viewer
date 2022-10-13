@@ -1,4 +1,3 @@
-import "./Post.scss";
 import LikeCounter from "./LikeCounter";
 
 function Post({ content, id, likes, increaseLikes }) {
