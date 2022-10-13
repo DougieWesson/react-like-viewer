@@ -24,7 +24,7 @@ function PostAddForm({ addPost }) {
     <div>
       <Form>
         <Form.Group controlId="postContent">
-          <Form.Label> Post Content </Form.Label>
+          <Form.Label className="formLabel"> Post Content </Form.Label>
           <Form.Control
             name="content"
             type="text"

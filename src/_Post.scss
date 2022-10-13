@@ -1,7 +1,6 @@
 .post {
-    border-style: solid;
-    border-color: red;
-    border-width: 1px;
+    @include baseBorder();
     margin: 10px;
     padding: 10px;
+    background-color: $postBackground;
 }
