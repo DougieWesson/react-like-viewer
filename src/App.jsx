@@ -3,7 +3,7 @@ import "./App.scss";
 import Container from "react-bootstrap/Container";
 import PostAddForm from "./PostAddForm";
 import PostFeed from "./PostFeed";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, Route, Routes } from "react-router-dom";
 import { Nav, Navbar } from "react-bootstrap";
 
@@ -13,12 +13,20 @@ function App() {
   const addPost = (content) => {
     const updated = [
       ...posts,
-      { id: ((posts.length>0) ? (posts[posts.length-1].id)+1 : 0), content: content.content, likes: 0 },
+      {
+        id: posts.length > 0 ? posts[posts.length - 1].id + 1 : 0,
+        content: content.content,
+        likes: 0,
+      },
     ];
+    localStorage.setItem("postList", JSON.stringify(updated));
     changePosts(updated);
   };
 
-  
+  useEffect(() => {
+    const listContents = localStorage.getItem("postList");
+    changePosts(JSON.parse(listContents) || []);
+  }, []);
 
   return (
     <Container>
@@ -41,14 +49,20 @@ function App() {
       </Navbar>
       <Routes>
         <Route
-        exact
+          exact
           path="/"
           element={<PostFeed posts={posts} changePosts={changePosts} />}
         />
         <Route
-        exact 
+          exact
           path="/feed"
-          element={<PostFeed className="postFeed" posts={posts} changePosts={changePosts} />}
+          element={
+            <PostFeed
+              className="postFeed"
+              posts={posts}
+              changePosts={changePosts}
+            />
+          }
         />
         <Route exact path="/add" element={<PostAddForm addPost={addPost} />} />
       </Routes>

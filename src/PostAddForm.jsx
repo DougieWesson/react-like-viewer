@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import toastr from "toastr";
-import 'toastr/build/toastr.min.css';
+import "toastr/build/toastr.min.css";
 
 function PostAddForm({ addPost }) {
   const initialPostState = { content: "", tags: "" };
