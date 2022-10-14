@@ -54,8 +54,14 @@ function PostFeed({ posts, changePosts }) {
     changePosts(updated);
   };
 
-  const sortByBest = () => {
+  const sortByLikes = () => {
     const updated = [...posts].sort((a, b) => a.likes - b.likes).reverse();
+    localStorage.setItem("postList", JSON.stringify(updated));
+    changePosts(updated);
+  }
+
+  const sortByBest = () => {
+    const updated = [...posts].sort((a, b) => (a.likes * a.id) - (b.likes * b.id)).reverse();
     localStorage.setItem("postList", JSON.stringify(updated));
     changePosts(updated);
   }
@@ -63,6 +69,7 @@ function PostFeed({ posts, changePosts }) {
   return (
     <div>
       <Button onClick={() => sortByNewest()}>Sort by Newest</Button>
+      <Button onClick={() => sortByLikes()}>Sort by Likes</Button>
       <Button onClick={() => sortByBest()}>Sort by Best</Button>
       {showPosts()}
     </div>
