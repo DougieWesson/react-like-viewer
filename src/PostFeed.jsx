@@ -1,3 +1,4 @@
+import { Button } from "react-bootstrap";
 import Post from "./Post";
 
 function PostFeed({ posts, changePosts }) {
@@ -47,7 +48,25 @@ function PostFeed({ posts, changePosts }) {
     changePosts(updated);
   };
 
-  return <div>{showPosts()}</div>;
+  const sortByNewest = () => {
+    const updated = [...posts].sort((a, b) => a.id - b.id).reverse();
+    localStorage.setItem("postList", JSON.stringify(updated));
+    changePosts(updated);
+  };
+
+  const sortByBest = () => {
+    const updated = [...posts].sort((a, b) => a.likes - b.likes).reverse();
+    localStorage.setItem("postList", JSON.stringify(updated));
+    changePosts(updated);
+  }
+
+  return (
+    <div>
+      <Button onClick={() => sortByNewest()}>Sort by Newest</Button>
+      <Button onClick={() => sortByBest()}>Sort by Best</Button>
+      {showPosts()}
+    </div>
+  );
 }
 
 export default PostFeed;

@@ -14,13 +14,18 @@ function App() {
     const updated = [
       ...posts,
       {
-        id: posts.length > 0 ? posts[posts.length - 1].id + 1 : 0,
+        id: posts.length > 0 ? findGreatestID() + 1 : 0,
         content: content.content,
         likes: 0,
       },
     ];
     localStorage.setItem("postList", JSON.stringify(updated));
     changePosts(updated);
+  };
+
+  const findGreatestID = () => {
+    const workingSortedPosts = [...posts].sort((a, b) => a.id - b.id);
+    return workingSortedPosts[workingSortedPosts.length - 1].id;
   };
 
   useEffect(() => {
